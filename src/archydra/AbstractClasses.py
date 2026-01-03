@@ -2,6 +2,7 @@ from abc import ABC,abstractmethod
 from typing import Iterable
 from itertools import cycle, islice
 from loguru import logger
+from archydra.Helpers import roundrobin
 
 class Producer(ABC):
     @abstractmethod
@@ -30,13 +31,9 @@ class Filter(Producer):
     Special kind of producer that takes in other producers as input
     """
     def _roundrobin(self):
-    # roundrobin('ABC', 'D', 'EF') → A D E B F C
-    # Algorithm credited to George Sakkis
         logger.debug("Starting roundrobin")
-        iterators = map(iter, [p.get_urls() for p in self.producers])
-        for num_active in range(len(self.producers), 0, -1):
-            iterators = cycle(islice(iterators, num_active))
-            yield from map(next, iterators)
+        my_iterables = tuple(p.get_urls() for p in self.producers)
+        yield from roundrobin(*my_iterables)
 
     def __init__(self, producers:list[Producer]) -> None:
         self.producers = producers
