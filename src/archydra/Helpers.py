@@ -1,7 +1,8 @@
 from itertools import cycle, islice
 from typing import Iterable
 
-def roundrobin[T](*iterables:Iterable[T]):
+
+def roundrobin[T](*iterables: Iterable[T]):
     "Visit input iterables in a cycle until each is exhausted."
     # roundrobin('ABC', 'D', 'EF') → A D E B F C
     # Algorithm credited to George Sakkis

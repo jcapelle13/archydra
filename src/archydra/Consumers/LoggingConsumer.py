@@ -4,7 +4,10 @@ from loguru import logger
 
 
 class LoggingConsumer(Consumer):
-    def __init__(self, log_level="DEBUG",) -> None:
+    def __init__(
+        self,
+        log_level="DEBUG",
+    ) -> None:
         self.log_level = log_level
         super().__init__()
 

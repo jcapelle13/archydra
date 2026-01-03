@@ -24,12 +24,12 @@ class Selector(Filter):
     def get_urls(self) -> Iterable[str]:
         rr_gen = self._roundrobin()
         while True:
-            current_page = list(islice(rr_gen,self.page_size))
+            current_page = list(islice(rr_gen, self.page_size))
             if current_page:
                 for line_num in range(len(current_page)):
                     click.echo(f"{line_num} - {current_page[line_num]}")
                 wanted = [int(x) for x in click.prompt("Enter wanted items").split(",")]
-                logger.debug("Selected: {}",wanted)
+                logger.debug("Selected: {}", wanted)
                 for x in wanted:
                     yield current_page[x]
             else:

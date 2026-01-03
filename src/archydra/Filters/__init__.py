@@ -1,1 +1,1 @@
-from .Selector import Selector
+from .Selector import Selector as Selector

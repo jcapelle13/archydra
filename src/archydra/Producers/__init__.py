@@ -1,1 +1,1 @@
-from .FileProducer import FileProducer
+from .FileProducer import FileProducer as FileProducer
