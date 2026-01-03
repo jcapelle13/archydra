@@ -2,6 +2,7 @@ from typing import Iterable
 from archydra.AbstractClasses import Filter, Producer
 from itertools import islice
 from loguru import logger
+import click
 
 class Selector(Filter):
     """
@@ -17,8 +18,8 @@ class Selector(Filter):
             current_page = list(islice(rr_gen,self.page_size))
             if current_page:
                 for line_num in range(len(current_page)):
-                    print(f"{line_num} - {current_page[line_num]}")
-                wanted = [int(x) for x in input("Enter wanted items: ").split(",")]
+                    click.echo(f"{line_num} - {current_page[line_num]}")
+                wanted = [int(x) for x in click.prompt("Enter wanted items").split(",")]
                 logger.debug("Selected: {}",wanted)
                 for x in wanted:
                     yield current_page[x]
