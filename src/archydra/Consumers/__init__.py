@@ -1,1 +1,2 @@
 from .ReadWiseConsumer import ReadWiseConsumer
+from .LoggingConsumer import LoggingConsumer

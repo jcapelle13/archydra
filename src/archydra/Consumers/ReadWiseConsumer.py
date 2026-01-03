@@ -1,5 +1,5 @@
 from archydra.AbstractClasses import Consumer
-from urllib.parse import urlparse, urlunparse
+from urllib.parse import urlparse
 import requests
 from loguru import logger
 
@@ -30,10 +30,13 @@ class ReadWiseConsumer(Consumer):
         super().__init__()
 
     def process_url(self, url):
+        logger.info("Sending url: {} to readwise...",url)
         response = self.session.post(f"{self.rw_endpoint}/save",
                           json={
                               "url":url
                           })
         response.raise_for_status()
+        if response.status_code == 200:
+            logger.warning("url {} was already in readwise...", url)
+        logger.trace("Readwise response: {}",response.json())
         return super().process_url(url)
-

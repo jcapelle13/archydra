@@ -11,4 +11,4 @@ class FileProducer(Producer):
         logger.debug("Opening file: {}", self.path)
         with open(self.path) as f:
             for line in f:
-                yield line
+                yield line.strip()
