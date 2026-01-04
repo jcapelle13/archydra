@@ -13,6 +13,9 @@ dependencies = [
     "click (>=8.3.1,<9.0.0)"
 ]
 
+[project.scripts]
+archydra = "archydra:cli"
+
 [tool.poetry]
 packages = [{include = "archydra", from = "src"}]
 
