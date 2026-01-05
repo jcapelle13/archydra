@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 
+
 class BaseConsumer(ABC):
     @abstractmethod
     def process_url(self, url: str) -> None:

@@ -1,9 +1,10 @@
 from abc import ABC, abstractmethod
 from .BaseTask import BaseTask
 
+
 class BaseQueue(ABC):
     @abstractmethod
-    def enqueue(self, t:BaseTask):
+    def enqueue(self, t: BaseTask):
         pass
 
     @abstractmethod

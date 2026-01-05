@@ -3,6 +3,7 @@ from loguru import logger
 from archydra.Helpers import roundrobin
 from archydra.Producers import BaseProducer
 
+
 class BaseFilter(BaseProducer):
     """
     Special kind of producer that takes in other producers as input
