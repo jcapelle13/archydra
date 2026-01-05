@@ -1,9 +1,9 @@
 from typing import Iterable
 from loguru import logger
 from archydra.Helpers import roundrobin
-from archydra.Producers import _BaseProducer
+from archydra.Producers import BaseProducer
 
-class BaseFilter(_BaseProducer):
+class BaseFilter(BaseProducer):
     """
     Special kind of producer that takes in other producers as input
     """
@@ -12,6 +12,6 @@ class BaseFilter(_BaseProducer):
         logger.debug("Starting roundrobin")
         yield from roundrobin(*(p.get_urls() for p in self.producers))
 
-    def __init__(self, producers: Iterable[_BaseProducer]) -> None:
+    def __init__(self, producers: Iterable[BaseProducer]) -> None:
         self.producers = producers
         super().__init__()
