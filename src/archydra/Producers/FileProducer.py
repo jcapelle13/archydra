@@ -1,4 +1,4 @@
-from ._BaseProducer import BaseProducer
+from .BaseProducer import BaseProducer
 from pathlib import Path
 from loguru import logger
 
