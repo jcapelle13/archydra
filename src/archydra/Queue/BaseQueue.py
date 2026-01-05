@@ -8,5 +8,9 @@ class BaseQueue(ABC):
         pass
 
     @abstractmethod
-    def dequeue(self) -> BaseTask:
+    def dequeue(self) -> BaseTask | None:
+        pass
+
+    @abstractmethod
+    def __len__(self) -> int:
         pass
