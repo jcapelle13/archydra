@@ -26,6 +26,7 @@ class FSQueue(BaseQueue):
     
     def dequeue(self) -> BaseTask | None:
         if len(self) == 0:
+            logger.warning("Queue in {} is empty!",self.base_dir)
             return None
         oldest_task = min(self.base_dir.glob("*.txt"))
         logger.debug("Read task from {}",oldest_task)
