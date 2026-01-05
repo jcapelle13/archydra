@@ -1,10 +1,10 @@
-from archydra.AbstractClasses import Consumer
+from .BaseConsumer import BaseConsumer
 from urllib.parse import urlparse
 import requests
 from loguru import logger
 
 
-class ReadWiseConsumer(Consumer):
+class ReadWiseConsumer(BaseConsumer):
     def test_token(self):
         parsed = urlparse(self.rw_endpoint)
         new_url = f"{parsed.scheme}://{parsed.netloc}/api/v2/auth"

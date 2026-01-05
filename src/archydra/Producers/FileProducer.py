@@ -1,9 +1,9 @@
-from archydra.AbstractClasses import Producer
+from ._BaseProducer import BaseProducer
 from pathlib import Path
 from loguru import logger
 
 
-class FileProducer(Producer):
+class FileProducer(BaseProducer):
     def __init__(self, path: Path):
         self.path = path
         super().__init__()

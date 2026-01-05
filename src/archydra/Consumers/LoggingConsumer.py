@@ -1,9 +1,9 @@
-from archydra.AbstractClasses import Consumer
+from .BaseConsumer import BaseConsumer
 
 from loguru import logger
 
 
-class LoggingConsumer(Consumer):
+class LoggingConsumer(BaseConsumer):
     def __init__(
         self,
         log_level="DEBUG",
