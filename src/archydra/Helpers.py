@@ -5,7 +5,13 @@ from ruamel.yaml import YAML
 from pathlib import Path
 from loguru import logger
 from .Queue import *
+from .Producers import *
+from .Consumers import *
 from hashlib import blake2b
+
+VALID_PRODUCERS = {"FileProducer":FileProducer}
+
+VALID_CONSUMERS = {"ReadWiseConsumer":ReadWiseConsumer,"LoggingConsumer":LoggingConsumer}
 
 yaml = YAML()
 

@@ -1,5 +1,8 @@
 consumers:
   - type: LoggingConsumer
+  - type: ReadWiseConsumer
+    args:
+      api_token: "{readwise_api_token}"
 
 producers:
   - type: FileProducer

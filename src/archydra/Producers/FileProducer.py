@@ -5,9 +5,11 @@ from loguru import logger
 
 
 class FileProducer(BaseProducer):
-    def __init__(self, file_path:Path|PathLike|str):
+    def __init__(self, file_path:Path|PathLike|str, create_file=True):
         logger.debug(f"Creating FileProducer from: {file_path}")
         self.file_path = Path(file_path)
+        if not self.file_path.exists() and create_file:
+            self.file_path.touch()
         super().__init__()
 
     def get_urls(self):

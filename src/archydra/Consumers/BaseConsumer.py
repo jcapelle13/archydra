@@ -1,6 +1,6 @@
 from abc import abstractmethod
 from pathlib import Path
-from ..Helpers import Worker
+from ..Helpers import Worker, VALID_CONSUMERS
 from loguru import logger
 from asyncio import sleep
 
@@ -34,3 +34,14 @@ class BaseConsumer(Worker):
         :type url: str
         """
         pass
+
+    @classmethod
+    def from_config(cls, config:dict) -> 'BaseConsumer':
+        con_type = config.get('type')
+        if con_type not in VALID_CONSUMERS:
+            raise ValueError(f"{con_type} is not a valid Consumer Type")
+        con_class:type = VALID_CONSUMERS[con_type]
+        if not issubclass(con_class, BaseConsumer):
+            raise ValueError(f"{con_type} is a valid, but {con_class} is not a subclass of BaseConsumer")
+        con_args = config.get("args",{})
+        return con_class(**con_args)

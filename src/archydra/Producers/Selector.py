@@ -1,6 +1,6 @@
 from typing import Iterable
 from .BaseFilter import BaseFilter
-from ..Producers import BaseProducer
+from . import BaseProducer
 from itertools import islice
 from loguru import logger
 import click
@@ -12,7 +12,7 @@ class Selector(BaseFilter):
     Filter that only outputs urls that user selects
     """
 
-    def __init__(self, producers: list[BaseProducer], page_size=0) -> None:
+    def __init__(self, producers: list[BaseProducer|dict], page_size=0) -> None:
         super().__init__(producers)
         if page_size > 0:
             self.page_size = page_size
