@@ -1,7 +1,7 @@
 from typing import Iterable
 from loguru import logger
-from archydra.Helpers import roundrobin
-from archydra.Producers import BaseProducer
+from ..Helpers import roundrobin
+from ..Producers import BaseProducer
 
 
 class BaseFilter(BaseProducer):

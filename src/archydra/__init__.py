@@ -1,1 +1,1 @@
-from archydra.cli import cli as cli
+from .cli import cli as cli

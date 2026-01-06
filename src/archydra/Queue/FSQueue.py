@@ -1,4 +1,4 @@
-from archydra.Queue.BaseTask import BaseTask
+from .BaseTask import BaseTask
 from .BaseQueue import BaseQueue
 from pathlib import Path
 from os import PathLike

@@ -1,6 +1,6 @@
 from typing import Iterable
 from .BaseFilter import BaseFilter
-from archydra.Producers import BaseProducer
+from ..Producers import BaseProducer
 from itertools import islice
 from loguru import logger
 import click
