@@ -7,7 +7,7 @@ from .BaseProducer import BaseProducer
 
 
 class FileProducer(BaseProducer):
-    def __init__(self, file_path:Path|PathLike|str, create_file=True):
+    def __init__(self, file_path: Path | PathLike | str, create_file=True):
         logger.debug(f"Creating FileProducer from: {file_path}")
         self.file_path = Path(file_path)
         if not self.file_path.exists() and create_file:

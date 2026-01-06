@@ -13,4 +13,3 @@ class LoggingConsumer(BaseConsumer):
 
     def process_url(self, url: str) -> None:
         logger.log(self.log_level, f"Got url: {url}")
-        
