@@ -1,0 +1,4 @@
+
+queue_type: FSQueue
+queue_args:
+  base_dir: "./queue"

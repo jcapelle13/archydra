@@ -10,7 +10,8 @@ requires-python = ">=3.13,<4.0"
 dependencies = [
     "requests (>=2.32.5,<3.0.0)",
     "loguru (>=0.7.3,<0.8.0)",
-    "click (>=8.3.1,<9.0.0)"
+    "click (>=8.3.1,<9.0.0)",
+    "ruamel-yaml (>=0.19.1,<0.20.0)"
 ]
 
 [project.scripts]

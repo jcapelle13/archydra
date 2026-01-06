@@ -12,5 +12,5 @@ class LoggingConsumer(BaseConsumer):
         super().__init__()
 
     def process_url(self, url: str) -> None:
-        logger.log(self.log_level, "Got url:")
-        return super().process_url(url)
+        logger.log(self.log_level, f"Got url: {url}")
+        

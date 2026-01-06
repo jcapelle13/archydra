@@ -3,6 +3,10 @@ from .BaseQueue import BaseQueue
 from pathlib import Path
 from os import PathLike
 from loguru import logger
+from datetime import datetime
+from ruamel.yaml import YAML
+
+yaml = YAML()
 
 class FSQueue(BaseQueue):
     """
@@ -19,19 +23,22 @@ class FSQueue(BaseQueue):
             gitignore.write_text("*\n")
     
     def enqueue(self, t: BaseTask):
-        time_stamp = "ts"
+        time_stamp = f"{datetime.now().timestamp()}"
         task_file = self.base_dir / f"task-{time_stamp}.txt"
         logger.debug("Writing task to {}",task_file)
-        task_file.write_text("\n".join([t.url,t.dest]))
+        with open(task_file, 'w') as new_file:
+            yaml.dump(t.to_dict(),new_file)
     
     def dequeue(self) -> BaseTask | None:
         if len(self) == 0:
-            logger.warning("Queue in {} is empty!",self.base_dir)
+            logger.warning("Filesystem Queue in {} is empty!",self.base_dir)
             return None
         oldest_task = min(self.base_dir.glob("*.txt"))
         logger.debug("Read task from {}",oldest_task)
-        txt = oldest_task.read_text()
-        new_task = BaseTask(*txt.split("\n"))
+        with open(oldest_task) as task_file:
+            data = yaml.load(task_file)
+            logger.trace(f"data from {oldest_task}: {data}")
+            new_task = BaseTask(**data)
         # in pathlib, unlink() deletes a file or removes a symlink
         oldest_task.unlink()
         return new_task

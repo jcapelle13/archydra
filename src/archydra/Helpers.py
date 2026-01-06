@@ -1,6 +1,35 @@
 from itertools import cycle, islice
 from typing import Iterable
+from abc import ABC, abstractmethod
+from ruamel.yaml import YAML
+from pathlib import Path
+from loguru import logger
+from .Queue import *
 
+yaml = YAML()
+
+QUEUE_TYPES = {"FSQueue": FSQueue}
+
+class Worker(ABC):
+    task_queue:BaseQueue
+    config:dict
+
+    def __init__(self, config_path:Path) -> None:
+        logger.debug("Instantiating worker with {}",config_path)
+        with open(config_path) as conf_file:
+            self.config = yaml.load(conf_file)
+        queue_type = self.config['queue_type']
+        if queue_type not in QUEUE_TYPES:
+            raise ValueError(f"{queue_type} is not a supported Queue Type")
+        queue_class:type = QUEUE_TYPES[queue_type]
+        if not issubclass(queue_class,BaseQueue):
+            raise ValueError(f"{queue_type} is in the list of supported queues, but not a subclass of BaseQueue")
+        queue_args:dict = self.config.get('queue_args',{})
+        self.task_queue = queue_class(**queue_args)
+    
+    @abstractmethod
+    def start(self) -> None:
+        pass
 
 def roundrobin[T](*iterables: Iterable[T]):
     "Visit input iterables in a cycle until each is exhausted."
