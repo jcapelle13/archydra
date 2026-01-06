@@ -1,10 +1,13 @@
 from abc import abstractmethod
-from typing import Iterable
 from pathlib import Path
-from ruamel.yaml import YAML
-from ..Helpers import Worker, VALID_PRODUCERS
-from ..Queue import BaseTask
+from typing import Iterable
+
 from loguru import logger
+from ruamel.yaml import YAML
+
+from ..Helpers import VALID_PRODUCERS, Worker
+from ..Queue import BaseTask
+
 yaml = YAML()
 
 

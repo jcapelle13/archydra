@@ -1,11 +1,13 @@
-import click
-from ruamel.yaml import YAML
-from .Consumers import *
-from .Producers import *
 import asyncio
-from .Helpers import Worker, VALID_CONSUMERS, VALID_PRODUCERS
-from loguru import logger
 from io import StringIO
+
+import click
+from loguru import logger
+from ruamel.yaml import YAML
+
+from .Consumers import *
+from .Helpers import VALID_CONSUMERS, VALID_PRODUCERS, Worker
+from .Producers import *
 
 yaml = YAML()
 

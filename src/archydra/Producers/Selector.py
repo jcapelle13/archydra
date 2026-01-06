@@ -1,10 +1,12 @@
-from typing import Iterable
-from .BaseFilter import BaseFilter
-from . import BaseProducer
-from itertools import islice
-from loguru import logger
-import click
 import os
+from itertools import islice
+from typing import Iterable
+
+import click
+from loguru import logger
+
+from . import BaseProducer
+from .BaseFilter import BaseFilter
 
 
 class Selector(BaseFilter):

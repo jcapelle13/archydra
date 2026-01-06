@@ -1,13 +1,15 @@
-from itertools import cycle, islice
-from typing import Iterable
 from abc import ABC, abstractmethod
-from ruamel.yaml import YAML
-from pathlib import Path
-from loguru import logger
-from .Queue import *
-from .Producers import *
-from .Consumers import *
 from hashlib import blake2b
+from itertools import cycle, islice
+from pathlib import Path
+from typing import Iterable
+
+from loguru import logger
+from ruamel.yaml import YAML
+
+from .Consumers import *
+from .Producers import *
+from .Queue import *
 
 VALID_PRODUCERS = {"FileProducer":FileProducer}
 

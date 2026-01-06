@@ -1,6 +1,6 @@
-from .BaseConsumer import BaseConsumer
-
 from loguru import logger
+
+from .BaseConsumer import BaseConsumer
 
 
 class LoggingConsumer(BaseConsumer):

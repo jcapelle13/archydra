@@ -1,7 +1,9 @@
-from .BaseProducer import BaseProducer
-from pathlib import Path
 from os import PathLike
+from pathlib import Path
+
 from loguru import logger
+
+from .BaseProducer import BaseProducer
 
 
 class FileProducer(BaseProducer):

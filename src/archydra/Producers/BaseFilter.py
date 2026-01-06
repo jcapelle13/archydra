@@ -1,6 +1,8 @@
 from typing import Iterable
+
 from loguru import logger
-from ..Helpers import roundrobin, VALID_PRODUCERS
+
+from ..Helpers import VALID_PRODUCERS, roundrobin
 from . import BaseProducer
 
 

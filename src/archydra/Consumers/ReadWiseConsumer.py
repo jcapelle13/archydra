@@ -1,7 +1,9 @@
-from .BaseConsumer import BaseConsumer
 from urllib.parse import urlparse
+
 import requests
 from loguru import logger
+
+from .BaseConsumer import BaseConsumer
 
 
 class ReadWiseConsumer(BaseConsumer):

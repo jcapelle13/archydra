@@ -1,10 +1,12 @@
-from .BaseTask import BaseTask
-from .BaseQueue import BaseQueue
-from pathlib import Path
-from os import PathLike
-from loguru import logger
 from datetime import datetime
+from os import PathLike
+from pathlib import Path
+
+from loguru import logger
 from ruamel.yaml import YAML
+
+from .BaseQueue import BaseQueue
+from .BaseTask import BaseTask
 
 yaml = YAML()
 

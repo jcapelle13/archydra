@@ -1,8 +1,10 @@
 from abc import abstractmethod
-from pathlib import Path
-from ..Helpers import Worker, VALID_CONSUMERS
-from loguru import logger
 from asyncio import sleep
+from pathlib import Path
+
+from loguru import logger
+
+from ..Helpers import VALID_CONSUMERS, Worker
 
 CONSUMER_PATH = Path("./etc/consumer.yaml")
 SLEEP_SECS=10
