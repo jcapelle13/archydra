@@ -1,0 +1,7 @@
+consumers:
+  - type: LoggingConsumer
+
+producers:
+  - type: FileProducer
+    args:
+      file_path: "./urls.txt"

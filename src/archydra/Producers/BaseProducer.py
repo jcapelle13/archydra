@@ -15,12 +15,12 @@ class BaseProducer(Worker):
     def __init__(self) -> None:
         super().__init__(PRODUCER_CONFIG)
     
-    def start(self) -> None:
-        logger.info(f"{type(self)} is starting...")
+    async def start(self) -> None:
+        logger.info(f"{self.worker_name} is starting...")
         for url in self.get_urls():
             new_task = BaseTask(url=url, action="Download",dest="./tmp")
-            self.task_queue.enqueue(new_task)
-        logger.info(f"{type(self)} is done!")
+            await self.task_queue.enqueue(new_task)
+        logger.info(f"{self.worker_name} is done!")
 
         
 

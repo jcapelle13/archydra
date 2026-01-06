@@ -22,14 +22,14 @@ class FSQueue(BaseQueue):
             gitignore = self.base_dir / ".gitignore"
             gitignore.write_text("*\n")
     
-    def enqueue(self, t: BaseTask):
+    async def enqueue(self, t: BaseTask):
         time_stamp = f"{datetime.now().timestamp()}"
         task_file = self.base_dir / f"task-{time_stamp}.txt"
         logger.debug("Writing task to {}",task_file)
         with open(task_file, 'w') as new_file:
             yaml.dump(t.to_dict(),new_file)
     
-    def dequeue(self) -> BaseTask | None:
+    async def dequeue(self) -> BaseTask | None:
         if len(self) == 0:
             logger.warning("Filesystem Queue in {} is empty!",self.base_dir)
             return None

@@ -6,6 +6,7 @@ from loguru import logger
 
 class FileProducer(BaseProducer):
     def __init__(self, file_path:Path|PathLike|str):
+        logger.debug(f"Creating FileProducer from: {file_path}")
         self.file_path = Path(file_path)
         super().__init__()
 

@@ -5,6 +5,7 @@ from ruamel.yaml import YAML
 from pathlib import Path
 from loguru import logger
 from .Queue import *
+from hashlib import blake2b
 
 yaml = YAML()
 
@@ -15,7 +16,8 @@ class Worker(ABC):
     config:dict
 
     def __init__(self, config_path:Path) -> None:
-        logger.debug("Instantiating worker with {}",config_path)
+        self.worker_name = f"{self.__class__.__name__}-{blake2b(digest_size=4).hexdigest()}"
+        logger.debug(f"Instantiating {self.__class__.__name__} with {config_path}")
         with open(config_path) as conf_file:
             self.config = yaml.load(conf_file)
         queue_type = self.config['queue_type']
@@ -28,7 +30,7 @@ class Worker(ABC):
         self.task_queue = queue_class(**queue_args)
     
     @abstractmethod
-    def start(self) -> None:
+    async def start(self) -> None:
         pass
 
 def roundrobin[T](*iterables: Iterable[T]):

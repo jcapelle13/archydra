@@ -4,11 +4,11 @@ from .BaseTask import BaseTask
 
 class BaseQueue(ABC):
     @abstractmethod
-    def enqueue(self, t: BaseTask):
+    async def enqueue(self, t: BaseTask):
         pass
 
     @abstractmethod
-    def dequeue(self) -> BaseTask | None:
+    async def dequeue(self) -> BaseTask | None:
         pass
 
     @abstractmethod
