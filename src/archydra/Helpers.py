@@ -7,20 +7,10 @@ from typing import Iterable
 from loguru import logger
 from ruamel.yaml import YAML
 
-from .Consumers import *
-from .Producers import *
 from .Queue import *
-
-VALID_PRODUCERS = {"FileProducer": FileProducer}
-
-VALID_CONSUMERS = {
-    "ReadWiseConsumer": ReadWiseConsumer,
-    "LoggingConsumer": LoggingConsumer,
-}
 
 yaml = YAML()
 
-QUEUE_TYPES = {"FSQueue": FSQueue}
 
 
 class Worker(ABC):
@@ -58,3 +48,6 @@ def roundrobin[T](*iterables: Iterable[T]):
     for num_active in range(len(iterables), 0, -1):
         iterators = cycle(islice(iterators, num_active))
         yield from map(next, iterators)
+
+from .Consumers import *
+from .Producers import *

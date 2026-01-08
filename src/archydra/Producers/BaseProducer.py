@@ -5,8 +5,9 @@ from typing import Iterable
 from loguru import logger
 from ruamel.yaml import YAML
 
-from ..Helpers import VALID_PRODUCERS, Worker
+from ..Helpers import Worker
 from ..Queue import BaseTask
+from . import VALID_PRODUCERS
 
 yaml = YAML()
 

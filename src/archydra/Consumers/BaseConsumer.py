@@ -4,7 +4,8 @@ from pathlib import Path
 
 from loguru import logger
 
-from ..Helpers import VALID_CONSUMERS, Worker
+from ..Helpers import Worker
+from . import VALID_CONSUMERS
 
 CONSUMER_PATH = Path("./etc/consumer.yaml")
 SLEEP_SECS = 10
